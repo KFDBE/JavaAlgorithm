@@ -1,20 +1,3 @@
-# JavaAlgorithm
-## 稀疏数组
-
-### 稀疏数组的转换思路
-**二维数组转稀疏数组的思路**
-
-1. 遍历原始的二维数组，得到有效的个数sum
-2. 根据sum就可以创建稀疏数组sparseArr  int[sum + 1] [3]
-3. 将二维数组的有效数据存入到稀疏数组中
-
-**稀疏数组转原始的二维数组的思路**
-1. 先读取稀疏数组的第一行，根据第一行的数据，创建原始的二位数组
-2. 在读取稀疏数组后几行的数据，并赋给原始的二维数组
-
-### 稀疏数组实现的代码
-
-```java
 package com.kfdbes.algorithm;
 
 public class Algorithm {
@@ -95,27 +78,3 @@ public class Algorithm {
 
     }
 }
-```
-
-![image-20230310195141298](/home/kfdbes/.config/Typora/typora-user-images/image-20230310195141298.png)
-
-![image-20230310195240929](/home/kfdbes/.config/Typora/typora-user-images/image-20230310195240929.png)
-
-## 数组模拟对列
-
-队列本身是有序列表，诺使用数组的结构来存储队列的数据，则队列数组的声明如下图，其中maxsize是该队列的最大容量。
-
-因为队列的输出、输入是分别从前后端来处理的，因此需要两个变量front及rear分别记录队列前后端的下标，front会随着数据的输出而改变，而rear则是随着数据的输入而改变。
-
-当我们将数据存入到队列时称为“addQueue“，addQueue的处理需要两个步骤，思路如下：
-
-1. 将尾指针往后移：rear+1，当front == rear[空]
-
-2. 若尾指针rear小于队列的最大下标maxsize-1，则将数据存入到rear所指的数组元素中，否则无法存入到数据中，否则无法存入数据。rear == maxsize - 1[队列满]
-
-### 数组模拟队列实现代码
-
-```java
-
-```
-
