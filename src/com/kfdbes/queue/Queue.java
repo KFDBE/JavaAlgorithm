@@ -1,6 +1,49 @@
 package com.kfdbes.queue;
 
+import java.util.Scanner;
+
 public class Queue {
+    public static void main(String[] args){
+        //测试
+        ArrayQueue arrayQueue = new ArrayQueue(3);
+        char key = ' ';//接受用户输入
+        Scanner scanner = new Scanner(System.in);//
+        boolean loop = true;
+        //输出一个菜单
+        while(loop){
+            System.out.println("s(show) : 显示队列");
+            System.out.println("e(exit) : 退出队列");
+            System.out.println("a(add) : 添加数据队列");
+            System.out.println("g(get) : 从队列取出数据");
+            System.out.println("h(head) : 查看队列头的数据");
+            key = scanner.next().charAt(0); //
+            switch (key){
+                case's':
+                    arrayQueue.showQueue();
+                    break;
+                case 'e':
+                    scanner.close();
+                    loop = false;
+                    break;
+                case 'a':
+                    System.out.println("请输入要添加的数据: ");
+                    arrayQueue.addQueue(scanner.nextInt());
+                    break;
+                case 'g'://取出数据
+                    try{
+                        int res = arrayQueue.getQueue();
+                        System.out.println("取出的数据是%d\n" + res);
+                    }catch (Exception e){
+                        System.out.println("队列为空");
+                    }break;
+                case 'h':
+                    arrayQueue.headQueue();
+                    break;
+                default:
+                    System.out.println("输入有误，请重新输入");
+            }
+        }
+    }
 
 }
 class ArrayQueue{
@@ -34,8 +77,7 @@ class ArrayQueue{
             System.out.println("队列满，不能加入数据--");
             return;
         }
-        rear++;//让rear后移
-        arr[rear] = n ;
+        arr[rear++] = n ;//让rear后移
     }
 
     //获取队列的数据，出队列
@@ -44,10 +86,30 @@ class ArrayQueue{
         if(isEmpty()){
             //通过抛出异常
             throw new RuntimeException("队列空，不能读取数据--");
-
         }
         front++;
         return arr[front];
+    }
+
+    //显示队列的所有数据
+    public void showQueue(){
+        //遍历
+        if(isEmpty()){
+            System.out.println("队列空的，没有数据～～");
+        }
+        for(int i = 0;i < arr.length;i++){
+            System.out.println("arr[%d] = %d\n" + i + arr[i]);
+        }
+
+    }
+
+    //显示队列的头数据，注意不是取出数据
+    public int headQueue(){
+        //判断
+        if(isEmpty()){
+            throw new RuntimeException("队列空的，没有数据～～");
+        }
+        return arr[front + 1];
     }
 
 }
