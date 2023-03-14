@@ -17,6 +17,10 @@ public class SingleLinkedListorder {
         list.update(newHero);
         System.out.println("-----------");
         list.list();
+
+        //删除一个节点
+        list.del(1);
+        list.list();
     }
 }
 
@@ -103,6 +107,30 @@ class LinkedListorder {
         }
     }
 
+    //删除节点
+    //思路
+    //1. head不能动，因此我们需要一个temp辅助节点找到要删除的节点的前一个节点
+    //2. 说明我们在比较时，是temp.next.no和需要删除的节点的no比较
+    public void del(int no){
+        HeroNode temp = head;
+        boolean flag = false;//标志是否找到待删除节点的
+        while(true){
+            if (temp.next == null){
+                break;
+            }
+            if (temp.next.no == no){
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag){
+            temp.next = temp.next.next;
+        }else{
+             System.out.println("找不到要删除的节点");
+        }
+
+    }
     //显示链表
     public void list(){
         //判断链表是否为空
