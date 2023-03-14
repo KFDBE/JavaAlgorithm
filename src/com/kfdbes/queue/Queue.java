@@ -80,7 +80,7 @@ class ArrayQueue{
         arr[rear++] = n ;//让rear后移
     }
 
-    //获取队列的数据，出队列
+    //获取 队列的数据，出队列
     public int getQueue(){
         //判断队列是否为空
         if(isEmpty()){
